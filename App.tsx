@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React, { useState} from 'react';
 import {
   SafeAreaView,
@@ -86,15 +76,8 @@ const App = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           
-          <Section title="Native Module">
-          <View>
-          <TextInput onChangeText={updateState} value={state} />
-            </View>
-          <Button
-              title="Click to invoke your native module!"
-              color="#841584"
-              onPress={onPress}
-            />
+          <Section title="LouieSdk1">
+      
           </Section>
 
 

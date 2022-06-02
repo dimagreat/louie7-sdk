@@ -3,8 +3,26 @@ package com.nativemodule;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.louie7.gestures.GesturesLouieFamily;
+import com.louie7.main.gestures.Louie7Gestures;
+import android.os.Bundle;
+import android.view.MotionEvent;
 
 public class MainActivity extends ReactActivity {
+
+  GesturesLouieFamily gestures;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    gestures = Louie7Gestures.INSTANCE.createListener(this);
+  }
+
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent ev) {
+    gestures.onTouchEvent(ev);
+    return super.dispatchTouchEvent(ev);
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
