@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -17,7 +17,13 @@ import {
   Text,
   useColorScheme,
   View,
+  NativeModules,
+  Button,
+  TextInput
 } from 'react-native';
+
+const { CalendarModule } = NativeModules;
+
 
 import {
   Colors,
@@ -58,9 +64,15 @@ const Section: React.FC<{
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const [ state, updateState ] = useState('test')
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const onPress = () => {
+    CalendarModule.createCalendarEvent('testName', state);
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -73,20 +85,19 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
+          
+          <Section title="Native Module">
+          <View>
+          <TextInput onChangeText={updateState} value={state} />
+            </View>
+          <Button
+              title="Click to invoke your native module!"
+              color="#841584"
+              onPress={onPress}
+            />
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+
+
         </View>
       </ScrollView>
     </SafeAreaView>
