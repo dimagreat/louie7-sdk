@@ -60,7 +60,7 @@ public class MainApplication extends Application implements ReactApplication {
     // If you opted-in for the New Architecture, we enable the TurboModule system
     new LouieSdk.Builder(this)
             .setAuth("f2cbd802-5b5e-43c6-8dd4-3915ab34752c").build().start();
-    Log.d("louie7Id", LouieSdk.Companion.getCurrentIdentifier(this));
+    Log.d("Louie7:ID", LouieSdk.Companion.getCurrentIdentifier(this));
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
